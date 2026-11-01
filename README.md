@@ -21,15 +21,15 @@ When I want to give people TF2 items as a gift, it's inconvient to have to resea
 ## Setup
 
 
-git clone https://github.com/you/your-project
-cd your-project
-javac Planner
+1. git clone https://github.com/nerp1/tf2-gift-planner
+2. cd tf2-gift-planner
+3. javac Planner
 
 
 
 ## Usage
-- Java Planner
-- Answer the questions
+1. Java Planner
+2. Answer the questions
 
 
 
