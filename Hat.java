@@ -1,5 +1,8 @@
 public class Hat extends Item {
-    public Hat (String name, int price) {
-        super(name, price);
+    private String type;
+
+    public Hat (String name, int price, int classId, String type) {
+        super(name, price, classId);
+        this.type = type;
     }
 }
