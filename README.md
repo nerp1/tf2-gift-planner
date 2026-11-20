@@ -1,21 +1,16 @@
 # TF2 Gift Planner
 
-This program plans a TF2 gift given a budget.
-
-## The Problem
-
-When I want to give people TF2 items as a gift, it's inconvenient to have to research prices and weapons. That's why I made this.
+This program plans a TF2 gift given a budget. I made this project because giving people TF2 items as a gift is a very inconvenient process, having to check multiple items and their prices, what weapons to choose, etc. So I made this to make the process easier. I think that rewarding my friends for playing my favorite video game by giving them virtual items is a great thing. :D
 
 ## How It Works
 
--Based on budget, hat preference, class preference, it will find eligible items
+-Based on budget, hat preference, class preference, it will find eligible items to plan a gift of TF2 items.
 
-![System diagram](docs/diagram.png)
 
 ## Tech Stack
 
 - **Language:** Java
-- **Libraries:** 
+- **Libraries:** Gson
 - **External tools:** Backpack.tf API, TF wiki (mediawiki) api
 
 ## Setup
@@ -35,9 +30,10 @@ When I want to give people TF2 items as a gift, it's inconvenient to have to res
 
 ## Roadmap
 
-- [ ] Mutliple weapon qualities
-- [ ] Curated Databse
-- [ ] Item images
+- [x] Mutliple weapon qualities
+- [] Item images
+- [] Full Database
+- [] Live prices of items/keys
 
 ## Author
 
