@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Comparator;
 public class ItemBase {
 
     private ArrayList<Hat> hats;
@@ -26,4 +27,6 @@ public class ItemBase {
     public ArrayList<Weapon> getWeapons() {
         return weapons;
     }
+
+
 }

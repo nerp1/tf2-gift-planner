@@ -10,7 +10,7 @@ public class ItemList {
 
         testbase.addWeapon("ScoutPrimary", 2, new int[]{0}, "unique",67,0 );
         testbase.addWeapon("ScoutPrimary2", 4, new int[]{0}, "strange",80,0 );
-        testbase.addWeapon("ScoutPrimary3", 50, new int[]{0}, "unique",440,0 );
+        testbase.addWeapon("ScoutPrimary3", 500, new int[]{0}, "unique",440,0 );
         testbase.addWeapon("ScoutStrangeSecondary", 4, new int[]{0}, "strange",67,1 );
         testbase.addWeapon("SoldierPrimary", 3, new int[]{1}, "unique",67,0 );
         testbase.addWeapon("ScoutMelee", 20, new int[]{0}, "unique",67,2 );

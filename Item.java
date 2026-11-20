@@ -46,7 +46,7 @@ public class Item {
 
     @Override
     public String toString() {
-        return String.format("%s %s - Price: %.2f",this.getQuality(), this.getName(), this.getPrice());
+        return String.format("%s %s - Price: %.2f ref",this.getQuality(), this.getName(), this.getPrice());
     }
 
 }

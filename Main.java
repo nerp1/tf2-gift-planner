@@ -3,6 +3,7 @@ import java.util.Scanner;
 void main() {
         int userClassId;
         int budget;     //in keys
+
         String hatPref;
 
         Scanner input = new Scanner(System.in);
@@ -13,11 +14,11 @@ void main() {
 
         do {
             System.out.println("What class are you planning a gift for?");
-            String classtype = input.next();
-            String classtypelower = classtype.toLowerCase();
+            String classType = input.next();
+            String classTypeLower = classType.toLowerCase();
             input.nextLine();
 
-            switch (classtypelower) {
+            switch (classTypeLower) {
                 case "scout" -> userClassId = 0;
                 case "soldier" -> userClassId = 1;
                 case "pyro"  -> userClassId = 2;
@@ -35,6 +36,7 @@ void main() {
         } while (userClassId == -1);
 
 
+
         while (true) {
             System.out.println("What is the budget for this gift? (min. 1 key)");
 
@@ -50,13 +52,16 @@ void main() {
             System.out.println("Invalid budget. Please enter an integer of at least 1.");
         }
 
+    double keyPrice = 63.22; //Eventually add Key price override?
+    double currentBudgetInRef = budget * keyPrice;
+
     do {
         System.out.println("What type of hat do you want for this gift? Cute, cool or both?");
-        String hatPreftemp = input.next();
-        String hatPreftemplower = hatPreftemp.toLowerCase();
+        String hatPrefTemp = input.next();
+        String hatPrefTempLowerCase = hatPrefTemp.toLowerCase();
         input.nextLine();
 
-        switch (hatPreftemplower) {
+        switch (hatPrefTempLowerCase) {
             case "cute" -> hatPref = "cute";
             case "cool" -> hatPref = "cool";
             case "both"  -> hatPref = "both";
@@ -70,40 +75,67 @@ void main() {
 
     // Variables all set: first part: check for weapons. Which means CREATE weapons.
 
-    ItemList testlist = new ItemList();
-    ItemBase testbase = new ItemBase();
-    testlist.CreateTestItemBase(testbase);
+    ItemList testList = new ItemList();
+    ItemBase testBase = new ItemBase();
+    testList.CreateTestItemBase(testBase);
     System.out.println("Pick a primary weapon.");
 
-    ArrayList<Item> PrimaryWeaponList = testlist.load(userClassId, "Weapon", 0, testbase);
-
+    ArrayList<Item> PrimaryWeaponList = testList.load(userClassId, "Weapon", 0, testBase);
+    ArrayList<Item> SecondaryWeaponList = testList.load(userClassId, "Weapon", 1, testBase);
+    ArrayList<Item> MeleeWeaponList = testList.load(userClassId, "Weapon", 2, testBase);
+    ArrayList<Item> HatList = testList.load(userClassId, "Hat", 0, testBase);
     Item PrimaryWeaponChoice;
 
-    PrimaryWeaponChoice = Choose(PrimaryWeaponList);
+    while (true) {
+        PrimaryWeaponChoice = Choose(PrimaryWeaponList,currentBudgetInRef - 5.00);
+        System.out.printf("Confirm: Is \"%s\" your choice? (Y/N)%n", PrimaryWeaponChoice);
+        String choice = input.nextLine();
+        if (choice.equalsIgnoreCase("y") || choice.equalsIgnoreCase("yes")) {
+            break;
+        }
+    }
 
-    System.out.print("Choice: " + PrimaryWeaponChoice);
+
+
 
 
 }
 
-public Item Choose(ArrayList<Item> itemlist) {
+
+
+
+public Item Choose(ArrayList<Item> itemList, double budget) {
     Scanner input = new Scanner(System.in);
-    int choicenum;
-    int indexPlusOne;
+    int choiceNum;
+
+    ArrayList<Item> sortedList = SortUtil.SortByPrice(itemList);
     while (true) {
-        for (int i = 0; i < itemlist.size(); i++) {
-            indexPlusOne = i + 1;
-            System.out.printf("(%d) %s%n",indexPlusOne , itemlist.get(i));
+        int listNum = 0;
+        for (Item item : sortedList) {
+            if (item.getPrice() <= budget) {
+                listNum++;
+                System.out.printf("(%d) %s%n", listNum, item);
+            } else {
+                break;
+            }
+
         }
+
         if (input.hasNextInt()) {
-            choicenum = input.nextInt();
-            break;
+            int choice = input.nextInt();
+
+            if (choice > 0 && choice <= listNum) {
+                choiceNum = choice;
+                break;
+            } else {
+                System.out.println("Invalid input. Please choose a valid option.");
+            }
         } else {
-            System.out.println("Invalid input. Please enter a valid input.");
+            System.out.println("Invalid input. Please choose a valid option.");
             input.next();
         }
     }
 
-    return itemlist.get(choicenum - 1);
+    return sortedList.get(choiceNum - 1);
 
 }
