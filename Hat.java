@@ -1,4 +1,4 @@
-import java.util.ArrayList;
+
 
 public class Hat extends Item {
     private String type;

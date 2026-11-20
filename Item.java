@@ -35,8 +35,8 @@ public class Item {
     }
 
     public boolean containsClass(int[] classIds, int classId) {
-        for (int i = 0; i < classIds.length; i++) {
-            if (classIds[i] == classId) {
+        for (int id : classIds) {
+            if (id == classId) {
                 return true;
             }
         }

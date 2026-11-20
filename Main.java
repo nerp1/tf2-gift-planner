@@ -78,13 +78,18 @@ void main() {
     ItemList testList = new ItemList();
     ItemBase testBase = new ItemBase();
     testList.CreateTestItemBase(testBase);
-    System.out.println("Pick a primary weapon.");
+
 
     ArrayList<Item> PrimaryWeaponList = testList.load(userClassId, "Weapon", 0, testBase);
     ArrayList<Item> SecondaryWeaponList = testList.load(userClassId, "Weapon", 1, testBase);
     ArrayList<Item> MeleeWeaponList = testList.load(userClassId, "Weapon", 2, testBase);
     ArrayList<Item> HatList = testList.load(userClassId, "Hat", 0, testBase);
     Item PrimaryWeaponChoice;
+    Item SecondaryWeaponChoice;
+    Item MeleeWeaponChoice;
+    Item HatChoice;
+
+    System.out.println("Pick a primary weapon.");
 
     while (true) {
         PrimaryWeaponChoice = Choose(PrimaryWeaponList,currentBudgetInRef - 5.00);
@@ -95,7 +100,44 @@ void main() {
         }
     }
 
+    currentBudgetInRef -= PrimaryWeaponChoice.getPrice();
 
+    System.out.println("Pick a secondary weapon.");
+
+    while (true) {
+        SecondaryWeaponChoice = Choose(SecondaryWeaponList,currentBudgetInRef - 4.77);
+        System.out.printf("Confirm: Is \"%s\" your choice? (Y/N)%n", SecondaryWeaponChoice);
+        String choice = input.nextLine();
+        if (choice.equalsIgnoreCase("y") || choice.equalsIgnoreCase("yes")) {
+            break;
+        }
+    }
+    currentBudgetInRef -= SecondaryWeaponChoice.getPrice();
+
+    System.out.println("Pick a melee weapon.");
+
+    while (true) {
+        MeleeWeaponChoice = Choose(MeleeWeaponList,currentBudgetInRef - 4.44);
+        System.out.printf("Confirm: Is \"%s\" your choice? (Y/N)%n", MeleeWeaponChoice);
+        String choice = input.nextLine();
+        if (choice.equalsIgnoreCase("y") || choice.equalsIgnoreCase("yes")) {
+            break;
+        }
+    }
+
+    System.out.println("Pick a hat");
+
+    currentBudgetInRef -= MeleeWeaponChoice.getPrice();
+
+    while (true) {
+        HatChoice = Choose(HatList,currentBudgetInRef - 3);
+        System.out.printf("Confirm: Is \"%s\" your choice? (Y/N)%n", HatChoice);
+        String choice = input.nextLine();
+        if (choice.equalsIgnoreCase("y") || choice.equalsIgnoreCase("yes")) {
+            break;
+        }
+    }
+    currentBudgetInRef -= HatChoice.getPrice();
 
 
 
@@ -119,6 +161,9 @@ public Item Choose(ArrayList<Item> itemList, double budget) {
                 break;
             }
 
+        }
+        if (listNum == 0) {
+            System.out.println("There are no items within your remaining budget. This error should not be seen.");
         }
 
         if (input.hasNextInt()) {

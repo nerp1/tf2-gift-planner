@@ -1,5 +1,5 @@
 import java.util.ArrayList;
-import java.util.Comparator;
+
 public class ItemBase {
 
     private ArrayList<Hat> hats;

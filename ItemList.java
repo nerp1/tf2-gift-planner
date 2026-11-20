@@ -2,19 +2,19 @@ import java.util.ArrayList;
 
 public class ItemList {
 
-    public void CreateTestItemBase(ItemBase testbase) {
-        testbase.addHat("ScoutHat", 50, new int[]{0},"unique", "cute", 67);
-        testbase.addHat("SoldierHat", 100, new int[]{1}, "unique","cool", 67);
-        testbase.addHat("PyroHat", 100, new int[]{2}, "unique","both", 67);
-        testbase.addHat("AllHat", 100, new int[]{0,1,2,3,4,5,6,7,8}, "unique","cool", 67);
+    public void CreateTestItemBase(ItemBase testBase) {
+        testBase.addHat("ScoutHat", 1.33, new int[]{0},"unique", "cute", 67);
+        testBase.addHat("SoldierHat", 100, new int[]{1}, "unique","cool", 67);
+        testBase.addHat("PyroHat", 100, new int[]{2}, "unique","both", 67);
+        testBase.addHat("AllHat", 100, new int[]{0,1,2,3,4,5,6,7,8}, "unique","cool", 67);
 
-        testbase.addWeapon("ScoutPrimary", 2, new int[]{0}, "unique",67,0 );
-        testbase.addWeapon("ScoutPrimary2", 4, new int[]{0}, "strange",80,0 );
-        testbase.addWeapon("ScoutPrimary3", 500, new int[]{0}, "unique",440,0 );
-        testbase.addWeapon("ScoutStrangeSecondary", 4, new int[]{0}, "strange",67,1 );
-        testbase.addWeapon("SoldierPrimary", 3, new int[]{1}, "unique",67,0 );
-        testbase.addWeapon("ScoutMelee", 20, new int[]{0}, "unique",67,2 );
-        testbase.addWeapon("AllMelee", 9, new int[]{0,1,2,3,4,5,6,7,8}, "unique",67,2 );
+        testBase.addWeapon("ScoutPrimary", 2, new int[]{0}, "unique",67,0 );
+        testBase.addWeapon("ScoutPrimary2", 4, new int[]{0}, "strange",80,0 );
+        testBase.addWeapon("ScoutPrimary3", 500, new int[]{0}, "unique",440,0 );
+        testBase.addWeapon("ScoutStrangeSecondary", 4, new int[]{0}, "strange",67,1 );
+        testBase.addWeapon("SoldierPrimary", 3, new int[]{1}, "unique",67,0 );
+        testBase.addWeapon("ScoutMelee", 20, new int[]{0}, "unique",67,2 );
+        testBase.addWeapon("AllMelee", 9, new int[]{0,1,2,3,4,5,6,7,8}, "unique",67,2 );
 
     }
 
@@ -28,7 +28,7 @@ public class ItemList {
 
     public ArrayList<Item> load(int classId, String ItemType, int slotIndex, ItemBase base) {
 
-        ArrayList<Item> list = new ArrayList<Item>();
+        ArrayList<Item> list = new ArrayList<>();
 
         if (ItemType.equals("Weapon")) {
 
