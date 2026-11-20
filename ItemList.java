@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class ItemList {
 
     public void CreateTestItemBase(ItemBase testBase) {
-        testBase.addHat("ScoutHat", 1.33, new int[]{0},"unique", "cute", 67);
+        testBase.addHat("Scout Hat", 1.33, new int[]{0},"unique", "cute", 67);
         testBase.addHat("SoldierHat", 100, new int[]{1}, "unique","cool", 67);
         testBase.addHat("PyroHat", 100, new int[]{2}, "unique","both", 67);
         testBase.addHat("AllHat", 100, new int[]{0,1,2,3,4,5,6,7,8}, "unique","cool", 67);
