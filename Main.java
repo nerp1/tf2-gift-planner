@@ -1,16 +1,14 @@
 import java.util.Scanner;
 
 void main() {
-        int classid;
-        int budget;
-        String hatPref = "invalid";
+        int userClassId;
+        int budget;     //in keys
+        String hatPref;
 
         Scanner input = new Scanner(System.in);
         System.out.println("TF2 Gift Planner :D");
 
-        //Testing purposes
-        Hat demofro = new Hat("Demoman's Fro", 2, 3, "cool");
-        Weapon quick = new Weapon("Quickibomb Launhcer", 2, 3);
+
 
 
         do {
@@ -20,21 +18,21 @@ void main() {
             input.nextLine();
 
             switch (classtypelower) {
-                case "scout" -> classid = 0;
-                case "soldier" -> classid = 1;
-                case "pyro"  -> classid = 2;
-                case "demoman", "demo" -> classid = 3;
-                case "heavy" -> classid = 4;
-                case "engineer", "engi" -> classid = 5;
-                case "medic"  -> classid = 6;
-                case "sniper"  -> classid = 7;
-                case "spy" -> classid = 8;
+                case "scout" -> userClassId = 0;
+                case "soldier" -> userClassId = 1;
+                case "pyro"  -> userClassId = 2;
+                case "demoman", "demo" -> userClassId = 3;
+                case "heavy" -> userClassId = 4;
+                case "engineer", "engi" -> userClassId = 5;
+                case "medic"  -> userClassId = 6;
+                case "sniper"  -> userClassId = 7;
+                case "spy" -> userClassId = 8;
                 default -> {
-                    classid = -1;
+                    userClassId = -1;
                     System.out.println("Invalid class. Please enter a valid TF2 class.");
                 }
             }
-        } while (classid == -1);
+        } while (userClassId == -1);
 
 
         while (true) {
@@ -70,5 +68,41 @@ void main() {
         }
     } while (hatPref.equals("invalid"));
 
-    // Variables all set: first part,
+    // Variables all set: first part: check for weapons. Which means CREATE weapons.
+
+    ItemList testlist = new ItemList();
+    ItemBase testbase = new ItemBase();
+    testlist.CreateTestItemBase(testbase);
+    System.out.println("Pick a primary weapon.");
+
+    ArrayList<Item> PrimaryWeaponList = testlist.load(userClassId, "Weapon", 0, testbase);
+
+    Item PrimaryWeaponChoice;
+
+    PrimaryWeaponChoice = Choose(PrimaryWeaponList);
+
+    System.out.print("Choice: " + PrimaryWeaponChoice);
+
+}
+
+public Item Choose(ArrayList<Item> itemlist) {
+    Scanner input = new Scanner(System.in);
+    int choicenum;
+    int indexPlusOne;
+    while (true) {
+        for (int i = 0; i < itemlist.size(); i++) {
+            indexPlusOne = i + 1;
+            System.out.printf("(%d) %s%n",indexPlusOne , itemlist.get(i));
+        }
+        if (input.hasNextInt()) {
+            choicenum = input.nextInt();
+            break;
+        } else {
+            System.out.println("Invalid input. Please enter a valid input.");
+            input.next();
+        }
+    }
+
+    return itemlist.get(choicenum - 1);
+
 }
