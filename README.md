@@ -4,29 +4,24 @@ This program plans a TF2 gift given a budget. I made this project because giving
 
 ## How It Works
 
--Based on budget, hat preference, class preference, it will find eligible items to plan a gift of TF2 items.
+Based on budget, hat preference, class preference, it will find eligible items to plan a gift of TF2 items.
 
 
 ## Tech Stack
 
 - **Language:** Java
 - **Libraries:** Gson
-- **External tools:** Backpack.tf API, TF wiki (mediawiki) api
+- **External tools:** TF WIKI (MediaWiki) API
 
 ## Setup
-
 
 1. git clone https://github.com/nerp1/tf2-gift-planner
 2. cd tf2-gift-planner
 3. javac Main.java
 
-
-
 ## Usage
 1. Java Main
 2. Answer the questions
-
-
 
 ## Roadmap
 
@@ -36,5 +31,4 @@ This program plans a TF2 gift given a budget. I made this project because giving
 - [] Live prices of items/keys
 
 ## Author
-
 Nate, https://github.com/nerp1
