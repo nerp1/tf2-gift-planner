@@ -31,7 +31,7 @@ public class Item {
     }
 
     public String getQuality() {
-        return quality;
+        return quality.substring(0, 1).toUpperCase() + quality.substring(1);
     }
 
     public boolean containsClass(int[] classIds, int classId) {
