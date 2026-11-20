@@ -4,7 +4,7 @@ This program plans a TF2 gift given a budget.
 
 ## The Problem
 
-When I want to give people TF2 items as a gift, it's inconvient to have to research prices and weapons. That's why I made this.
+When I want to give people TF2 items as a gift, it's inconvenient to have to research prices and weapons. That's why I made this.
 
 ## How It Works
 
@@ -16,19 +16,19 @@ When I want to give people TF2 items as a gift, it's inconvient to have to resea
 
 - **Language:** Java
 - **Libraries:** 
-- **External tools:** Backpack.tf API
+- **External tools:** Backpack.tf API, TF wiki (mediawiki) api
 
 ## Setup
 
 
 1. git clone https://github.com/nerp1/tf2-gift-planner
 2. cd tf2-gift-planner
-3. javac Planner
+3. javac Main.java
 
 
 
 ## Usage
-1. Java Planner
+1. Java Main
 2. Answer the questions
 
 
