@@ -14,7 +14,9 @@ public class Hat extends Item {
     public Hat (String name, double price, int[] classIds, String type, int itemId, String quality) {
         super(name, price, classIds, itemId, quality);
         this.type = type;
-        this.url = this.getWikiURLImage(name);
+        //this.url = this.getWikiURLImage(name); Don't use for now, still using test items.
+        this.url = "empty";
+
 
     }
 

@@ -55,6 +55,13 @@ void main() {
     double keyPrice = 63.22; //Eventually add Key price override?
     double currentBudgetInRef = budget * keyPrice;
 
+    if (budget > 1) {
+        System.out.printf("%d keys is %.2f ref.%n", budget, currentBudgetInRef);
+    } else {
+        System.out.printf("%d key is %.2f ref.%n", budget, currentBudgetInRef);
+    }
+
+
     do {
         System.out.println("What type of hat do you want for this gift? Cute, cool or both?");
         String hatPrefTemp = input.next();
@@ -92,7 +99,10 @@ void main() {
     System.out.println("Pick a primary weapon.");
 
     while (true) {
-        PrimaryWeaponChoice = Choose(PrimaryWeaponList,currentBudgetInRef - 5.00);
+        PrimaryWeaponChoice = Choose(PrimaryWeaponList,currentBudgetInRef);
+        if (PrimaryWeaponChoice.getName().equals("empty")) {
+            break;
+        }
         System.out.printf("Confirm: Is \"%s\" your choice? (Y/N)%n", PrimaryWeaponChoice);
         String choice = input.nextLine();
         if (choice.equalsIgnoreCase("y") || choice.equalsIgnoreCase("yes")) {
@@ -105,7 +115,10 @@ void main() {
     System.out.println("Pick a secondary weapon.");
 
     while (true) {
-        SecondaryWeaponChoice = Choose(SecondaryWeaponList,currentBudgetInRef - 4.77);
+        SecondaryWeaponChoice = Choose(SecondaryWeaponList,currentBudgetInRef);
+        if (SecondaryWeaponChoice.getName().equals("empty")) {
+            break;
+        }
         System.out.printf("Confirm: Is \"%s\" your choice? (Y/N)%n", SecondaryWeaponChoice);
         String choice = input.nextLine();
         if (choice.equalsIgnoreCase("y") || choice.equalsIgnoreCase("yes")) {
@@ -117,7 +130,10 @@ void main() {
     System.out.println("Pick a melee weapon.");
 
     while (true) {
-        MeleeWeaponChoice = Choose(MeleeWeaponList,currentBudgetInRef - 4.44);
+        MeleeWeaponChoice = Choose(MeleeWeaponList,currentBudgetInRef);
+        if (MeleeWeaponChoice.getName().equals("empty")) {
+            break;
+        }
         System.out.printf("Confirm: Is \"%s\" your choice? (Y/N)%n", MeleeWeaponChoice);
         String choice = input.nextLine();
         if (choice.equalsIgnoreCase("y") || choice.equalsIgnoreCase("yes")) {
@@ -130,7 +146,10 @@ void main() {
     currentBudgetInRef -= MeleeWeaponChoice.getPrice();
 
     while (true) {
-        HatChoice = Choose(HatList,currentBudgetInRef - 3);
+        HatChoice = Choose(HatList,currentBudgetInRef);
+        if (HatChoice.getName().equals("empty")) {
+            break;
+        }
         System.out.printf("Confirm: Is \"%s\" your choice? (Y/N)%n", HatChoice);
         String choice = input.nextLine();
         if (choice.equalsIgnoreCase("y") || choice.equalsIgnoreCase("yes")) {
@@ -150,6 +169,8 @@ public Item Choose(ArrayList<Item> itemList, double budget) {
     Scanner input = new Scanner(System.in);
     int choiceNum;
 
+    System.out.printf("You have %.2f ref left in your budget.%n", budget);
+
     ArrayList<Item> sortedList = SortUtil.SortByPrice(itemList);
     while (true) {
         int listNum = 0;
@@ -163,7 +184,8 @@ public Item Choose(ArrayList<Item> itemList, double budget) {
 
         }
         if (listNum == 0) {
-            System.out.println("There are no items within your remaining budget. This error should not be seen.");
+            System.out.println("There are no items within your remaining budget.");
+            return new Item("emptyItem");
         }
 
         if (input.hasNextInt()) {

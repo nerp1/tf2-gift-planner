@@ -14,6 +14,14 @@ public class Item {
         this.quality = quality;
     }
 
+    public Item(String name) {
+        this.name = name;
+        this.price = 0.00;
+        this.classIds = null;
+        this.itemId = 0;
+        this.quality = "empty";
+    }
+
     public String getName() {
         return name;
     }
