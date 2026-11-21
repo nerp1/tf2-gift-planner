@@ -39,7 +39,16 @@ public class Item {
     }
 
     public String getQuality() {
-        return quality.substring(0, 1).toUpperCase() + quality.substring(1);
+        String trimmed = quality.trim();
+        if (!trimmed.contains(" ")) {
+            return trimmed.substring(0, 1).toUpperCase() + trimmed.substring(1);
+        } else {
+            String[] words = trimmed.split(" ");
+            for (int i = 0; i < words.length; i++) {
+                words[i] = words[i].substring(0, 1).toUpperCase() + words[i].substring(1);
+            }
+            return String.join(" ", words);
+        }
     }
 
     public boolean containsClass(int[] classIds, int classId) {

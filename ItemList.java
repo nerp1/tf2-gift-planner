@@ -20,7 +20,7 @@ public class ItemList {
 
     }
 
-    public void scoutItems(ItemBase base) {
+    public void itemBaseOne(ItemBase base) {
         //Primary Weapons
         base.addWeapon("Force-a-Nature", .11, new int[]{0}, "unique", 45, 0);
         base.addWeapon("The Shortstop", .11, new int[]{0}, "unique", 220, 0);
@@ -29,7 +29,7 @@ public class ItemList {
         base.addWeapon("The Back Scatter", .11, new int[]{0}, "unique",1103 , 0);
         base.addWeapon("Silver Botkiller Scattergun Mk.I", 8.55, new int[]{0}, "strange",799 , 0);
         base.addWeapon("Gold Botkiller Scattergun Mk.I",b.keysToRef(3) + 15 , new int[]{0}, "strange",808 , 0);
-        base.addWeapon("Scattergun",b.keysToRef(41), new int[]{0}, "australium ",200  , 0);
+        base.addWeapon("Scattergun",b.keysToRef(41), new int[]{0}, "strange australium",200  , 0);
     }
 
 
@@ -44,7 +44,6 @@ public class ItemList {
         ArrayList<Item> list = new ArrayList<>();
 
         if (ItemType.equals("Weapon")) {
-
             for (Weapon e : base.getWeapons()) {
                 if (e.containsClass(e.getClassIds(), classId)) {
                     if (e.getSlotIndex() == slotIndex) {
