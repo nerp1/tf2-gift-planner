@@ -6,6 +6,7 @@ import java.io.IOException;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonArray;
+import java.time.Duration;
 
 public class Hat extends Item {
     private String type;
@@ -14,8 +15,10 @@ public class Hat extends Item {
     public Hat (String name, double price, int[] classIds, String type, int itemId, String quality) {
         super(name, price, classIds, itemId, quality);
         this.type = type;
-        //this.url = this.getWikiURLImage(name); Don't use for now, still using test items.
-        this.url = "empty";
+        // Don't use for now when running main, still using test items.
+        this.url = this.getWikiURLImage(name);
+
+        //this.url = "empty";
 
 
     }
@@ -38,7 +41,11 @@ public class Hat extends Item {
         String url = "https://wiki.teamfortress.com/w/api.php"
                 + String.format("?action=query&titles=File:%s.png&prop=imageinfo&iiprop=url&format=json", newName);
 
-        HttpRequest request = HttpRequest.newBuilder().uri(URI.create(url)).GET().build();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .timeout(Duration.ofSeconds(10))
+                .GET()
+                .build();
         HttpClient client = HttpClient.newHttpClient();
 
         try {
@@ -68,16 +75,14 @@ public class Hat extends Item {
 
 
         } catch (IOException e) {
-            e.printStackTrace();
+            System.out.println("Unable to connect to the TF2 Wiki.");
+            return null;
 
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
-            e.printStackTrace();
+            System.out.println("Image request was interrupted.");
+            return null;
         }
-
-
-
-        return null;
     }
 }
 
