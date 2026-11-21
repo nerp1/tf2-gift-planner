@@ -2,20 +2,16 @@ import java.awt.Desktop;
 import java.awt.HeadlessException;
 import java.io.IOException;
 import java.net.URI;
-
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
-
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.gson.JsonArray;
 import java.time.Duration;
 
 public class ImageHandler {
-
-
-    public static String getWikiURLImageHat (String name) {
+    public static String getWikiURLImage (String name) {
         String newName = name.replace(" ", "_");
 
 
@@ -66,7 +62,6 @@ public class ImageHandler {
             return null;
         }
     }
-
     public static void OpenImage(String url) {
         try {
             if (!Desktop.isDesktopSupported()) {

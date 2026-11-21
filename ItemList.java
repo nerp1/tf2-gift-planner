@@ -42,6 +42,28 @@ public class ItemList {
         base.addWeapon("C.A.P.P.E.R", b.keysToRef(12) + 40, new int[]{0,5}, "unique", 30666, 1);
         base.addWeapon("Pistol", 25.55, new int[]{0,5}, "strange", 209, 1);
 
+        //Melee Scout Weapons
+        base.addWeapon("The Sandman", .11, new int[]{0},"unique", 44, 2);
+        base.addWeapon("The Holy Mackerel", .11, new int[]{0},"unique", 221, 2);
+        base.addWeapon("The Candy Cane", .11, new int[]{0},"unique", 317, 2);
+        base.addWeapon("The Boston Basher", .11, new int[]{0},"unique", 325, 2);
+        base.addWeapon("Sun-on-a-Stick", .11, new int[]{0},"unique", 349, 2);
+        base.addWeapon("The Fan O'War", .11, new int[]{0},"unique", 355, 2);
+        base.addWeapon("The Atomizer", .11, new int[]{0},"unique", 450, 2);
+        base.addWeapon("The Wrap Assassin", .11, new int[]{0},"unique", 648, 2);
+        base.addWeapon("Three-Rune Blade", 3.33, new int[]{0},"unique", 452, 2);
+        base.addWeapon("Batsaber", b.keysToRef(55) + 30, new int[]{0},"unique", 30667, 2);
+
+
+
+
+
+
+
+
+
+
+
 
 
     }
@@ -59,7 +81,7 @@ public class ItemList {
 
         if (ItemType.equals("Weapon")) {
             for (Weapon e : base.getWeapons()) {
-                if (e.containsClass(e.getClassIds(), classId)) {
+                if (e.containsClass(classId)) {
                     if (e.getSlotIndex() == slotIndex) {
                         list.add(e);
                     }
@@ -67,7 +89,7 @@ public class ItemList {
             }
         } else if (ItemType.equals("Hat")) {
             for (Hat g: base.getHats()) {
-                if (g.containsClass(g.getClassIds(), classId)) {
+                if (g.containsClass(classId)) {
                     list.add(g);
                 }
             }

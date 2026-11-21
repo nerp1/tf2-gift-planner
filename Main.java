@@ -8,9 +8,14 @@ void main() {
 
         Scanner input = new Scanner(System.in);
         System.out.println("TF2 Gift Planner :D");
+        System.out.print("Type \"faq\" if you are confused about what this project is about ");
+        System.out.print("or the jargon surrounding TF2 and its items.\n");
 
+        String faqChoice = input.nextLine();
 
-
+        if (faqChoice.equalsIgnoreCase("faq")) {
+            FAQ();
+        }
 
         do {
             System.out.println("What class are you planning a gift for?");
@@ -165,8 +170,6 @@ void main() {
 }
 
 
-
-
 public Item Choose(ArrayList<Item> itemList, double budget) {
     Scanner input = new Scanner(System.in);
     int choiceNum;
@@ -207,4 +210,101 @@ public Item Choose(ArrayList<Item> itemList, double budget) {
 
     return sortedList.get(choiceNum - 1);
 
+}
+
+public static void FAQ() {
+    boolean exitTime = false;
+    Scanner input = new Scanner(System.in);
+    do {
+
+
+        System.out.println("===== FAQ =====");
+        System.out.println("(1) What is TF2?");
+        System.out.println("(2) What are the TF2 classes?");
+        System.out.println("(3) What are the different item types?");
+        System.out.println("(4) What do item qualities mean?");
+        System.out.println("(5) How does the budget system work?");
+        System.out.println("(6) Exit");
+
+        if (input.hasNextInt()) {
+            int choice = input.nextInt();
+
+            if (choice > 0 && choice <= 6) {
+                switch (choice) {
+                    case 1, 2, 3, 4, 5 -> System.out.println(faqAnswer(choice));
+                    case 6 -> exitTime = true;
+                }
+                System.out.println("Press any button to continue.");
+                input.nextLine();
+                input.nextLine();
+            } else {
+                System.out.println("Invalid input. Please choose a valid option.");
+            }
+        } else {
+            System.out.println("Invalid input. Please choose a valid option.");
+            input.next();
+        }
+    } while (!exitTime);
+}
+
+public static String faqAnswer(int choice) {
+    String answerOne = """
+            Team Fortress 2, commonly abbreviated to TF2, is a multiplayer first-person shooter game developed and 
+            published by Valve. It was originally released in October 2007 for Windows. Players compete on two opposing 
+            teams, RED and BLU, and choose from nine character classes.
+            """;
+
+
+    String answerTwo = """
+            The 9 character classaes are Scout, Soldier, Pyro, Demoman, Heavy, Engineer, Medic, Sniper and Spy.
+            """;
+
+    String answerThree = """
+            TF2 has an item system including unique weapons and cosmetics. Different weapons have
+            different properties, including different strengths, weaknesses, and gameplay effects. Some weapons are 
+            only able to be used by a single class, while others are able to be used by some or every class.
+            Cosmetics in TF2 are wearable items that appear on a player's model, such as hats, different clothes,
+            or other accessories.
+           """;
+
+    String answerFour = """
+            There are many different qualities an item could be.
+            
+            The Unique quality is the most common item quality, and has no special features. It is regarded as
+            the default item quality.
+            
+            The Strange quality tracks events and records them under the description of the item, making it viewable to
+            both the owner and other players. Generally, weapons will track kills using that weapon, and cosmetics will
+            track points scored while wearing the item.
+            
+            The Vintage quality designates obtained items that were Unique quality before the 2010 "Mann-Conomy Update".
+            They are functionally and visually identical to their Unique counterparts.
+            
+            The Genuine quality designates items obtained through cross-game promotions or in-game events,
+            distinguishing them from the same items gained via other methods. They are also functionally and visually
+            identical to their Unique counterparts.
+            
+            Item qualities play a factor in determining the worth of an item, but it is not the only factor.
+            Rarity, demand, and other variable factors also matter too.
+            """;
+
+    String answerFive = """
+            The real-world value of a TF2 item is usually measured by its worth in keys or ref.
+            
+            Items can be smelted into scrap metal, which eventually combines into refined metal. One refined metal, 
+            commonly, abbreviated as ref, is generally worth around 0.02 - 0.04$ USD. 
+            
+            A key, an item needed to open crates, which when opened, give items, is able to be purchased 
+            for 2.49$ in the in-game store. Usually, it is cheaper from third-party vendors. Keys can be converted to 
+            refined, although the value fluctuates.
+            """;
+
+    return switch (choice) {
+        case 1 -> answerOne;
+        case 2 -> answerTwo;
+        case 3 -> answerThree;
+        case 4 -> answerFour;
+        case 5 -> answerFive;
+        default -> "Invalid choice.";
+    };
 }
