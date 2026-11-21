@@ -52,8 +52,10 @@ void main() {
             System.out.println("Invalid budget. Please enter an integer of at least 1.");
         }
 
-    double keyPrice = 63.22; //Eventually add Key price override?
-    double currentBudgetInRef = budget * keyPrice;
+
+
+    budgetCalculator b = new budgetCalculator(63.22);
+    double currentBudgetInRef = b.keysToRef(budget);
 
     if (budget > 1) {
         System.out.printf("%d keys is %.2f ref.%n", budget, currentBudgetInRef);

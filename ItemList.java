@@ -2,6 +2,8 @@ import java.util.ArrayList;
 
 public class ItemList {
 
+    budgetCalculator b = new budgetCalculator(63.22);
+
     public void CreateTestItemBase(ItemBase testBase) {
         testBase.addHat("Scout Hat", 1.33, new int[]{0},"unique", "cute", 67);
         testBase.addHat("SoldierHat", 100, new int[]{1}, "unique","cool", 67);
@@ -18,6 +20,17 @@ public class ItemList {
 
     }
 
+    public void scoutItems(ItemBase base) {
+        //Primary Weapons
+        base.addWeapon("Force-a-Nature", .11, new int[]{0}, "unique", 45, 0);
+        base.addWeapon("The Shortstop", .11, new int[]{0}, "unique", 220, 0);
+        base.addWeapon("The Soda Popper", .11, new int[]{0}, "unique",448 , 0);
+        base.addWeapon("Baby Face's Blaster", .11, new int[]{0}, "unique",772 , 0);
+        base.addWeapon("The Back Scatter", .11, new int[]{0}, "unique",1103 , 0);
+        base.addWeapon("Silver Botkiller Scattergun Mk.I", 8.55, new int[]{0}, "strange",799 , 0);
+        base.addWeapon("Gold Botkiller Scattergun Mk.I",b.keysToRef(3) + 15 , new int[]{0}, "strange",808 , 0);
+        base.addWeapon("Scattergun",b.keysToRef(41), new int[]{0}, "australium ",200  , 0);
+    }
 
 
 
