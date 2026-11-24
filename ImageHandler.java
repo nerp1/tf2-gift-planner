@@ -13,7 +13,7 @@ import java.time.Duration;
 public class ImageHandler {
     public static String getWikiURLImage (String name) {
         String newName = name.replace(" ", "_");
-
+        System.out.println(newName);
 
 
         String url = "https://wiki.teamfortress.com/w/api.php"
@@ -43,7 +43,7 @@ public class ImageHandler {
             JsonObject image = imageInfo.get(0).getAsJsonObject();
 
             return image.get("url").getAsString();
-            //System.out.println("Image URL: " + imageURL);
+
 
 
 

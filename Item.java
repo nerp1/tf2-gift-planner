@@ -77,6 +77,14 @@ public class Item {
         return url;
     }
 
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public String getSKU(Item item) {
+        //tbd...
+        return null;
+    }
 
     @Override
     public String toString() {
