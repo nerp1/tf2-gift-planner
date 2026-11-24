@@ -249,8 +249,8 @@ public static void FAQ() {
 
 public static String faqAnswer(int choice) {
     String answerOne = """
-            Team Fortress 2, commonly abbreviated to TF2, is a multiplayer first-person shooter game developed and 
-            published by Valve. It was originally released in October 2007 for Windows. Players compete on two opposing 
+            Team Fortress 2, commonly abbreviated to TF2, is a multiplayer first-person shooter game developed and
+            published by Valve. It was originally released in October 2007 for Windows. Players compete on two opposing
             teams, RED and BLU, and choose from nine character classes.
             """;
 
@@ -261,7 +261,7 @@ public static String faqAnswer(int choice) {
 
     String answerThree = """
             TF2 has an item system including unique weapons and cosmetics. Different weapons have
-            different properties, including different strengths, weaknesses, and gameplay effects. Some weapons are 
+            different properties, including different strengths, weaknesses, and gameplay effects. Some weapons are
             only able to be used by a single class, while others are able to be used by some or every class.
             Cosmetics in TF2 are wearable items that appear on a player's model, such as hats, different clothes,
             or other accessories.
@@ -291,11 +291,11 @@ public static String faqAnswer(int choice) {
     String answerFive = """
             The real-world value of a TF2 item is usually measured by its worth in keys or ref.
             
-            Items can be smelted into scrap metal, which eventually combines into refined metal. One refined metal, 
-            commonly, abbreviated as ref, is generally worth around 0.02 - 0.04$ USD. 
+            Items can be smelted into scrap metal, which eventually combines into refined metal. One refined metal,
+            commonly, abbreviated as ref, is generally worth around 0.02 - 0.04$ USD.
             
-            A key, an item needed to open crates, which when opened, give items, is able to be purchased 
-            for 2.49$ in the in-game store. Usually, it is cheaper from third-party vendors. Keys can be converted to 
+            A key, an item needed to open crates, which when opened, give items, is able to be purchased
+            for 2.49$ in the in-game store. Usually, it is cheaper from third-party vendors. Keys can be converted to
             refined, although the value fluctuates.
             """;
 
