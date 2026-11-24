@@ -797,6 +797,36 @@ public class ItemList {
         base.addWeapon("Freedom Staff", 3.44, new int[]{0,1,2,3,4,7}, "unique", 474, 2);
         base.addWeapon("Freedom Staff", 49.44, new int[]{0,1,2,3,4,7}, "unique", 474, 2);
 
+
+        //HATS
+        base.addHat("Batter's Helmet", 1.55, new int[]{0}, "unique", "cool", 52);
+        base.addHat("Bonk Helm", 1.55, new int[]{0}, "unique", "cool", 106);
+        base.addHat("Ye Olde Baker Boy", 1.55, new int[]{0}, "unique", "cute", 107);
+        base.addHat("Baseball Bill's Sports Shine", 1.55, new int[]{0}, "unique", "cool", 111);
+        base.addHat("Troublemaker's Tossle Cap", 1.55, new int[]{0}, "unique", "both", 150);
+        base.addHat("Whoopee Cap", 1.55, new int[]{0}, "unique", "both", 174);
+        base.addHat("Milkman", 1.55, new int[]{0}, "unique", "both", 219);
+        base.addHat("Bombing Run", 1.55, new int[]{0}, "unique", "both", 249);
+        base.addHat("Flipped Trilby", 1.55, new int[]{0}, "unique", "both", 324);
+        base.addHat("Superfan", 1.55, new int[]{0}, "unique", "both", 346);
+        base.addHat("Hero's Tail", 7.55, new int[]{0}, "unique", "both", 453);
+        base.addHat("El Jefe", 1.55, new int[]{0}, "unique", "both", 539);
+        base.addHat("Backwards Ballcap", 1.55, new int[]{0}, "unique", "both", 617);
+        base.addHat("Hermes", 1.55, new int[]{0}, "unique", "both", 617);
+        base.addHat("Big Elfin Deal", 1.55, new int[]{0}, "unique", "cute", 652);
+        base.addHat("Front Runner", 2, new int[]{0}, "unique", "cool", 760);
+        base.addHat("Cross-Comm Express", 2, new int[]{0}, "unique", "cool", 765);
+        base.addHat("Fed-Fightin' Fedora", 1.55, new int[]{0}, "unique", "both", 780);
+        base.addHat("Void Monk Hair", 22, new int[]{0}, "unique", "cute", 788);
+        base.addHat("Robot Running Man", 1.55, new int[]{0}, "unique", "cool", 846);
+        base.addHat("Crafty Hair", 1.88, new int[]{0,1,4,5,6}, "unique", "cute", 853);
+        base.addHat("Wilson Weave", 1.88, new int[]{0,3,4,5,6}, "unique", "cute", 1012);
+        base.addHat("AAAA", 1.55, new int[]{0}, "unique", "both", 0000);
+
+
+
+
+        base.addHat("Hot Dogger", 1.55, new int[]{0,1,2,3,4,5,6,7,8}, "unique", "cute", 539);
     }
 
 
@@ -806,7 +836,7 @@ public class ItemList {
 
 
 
-    public ArrayList<Item> load(int classId, String ItemType, int slotIndex, ItemBase base) {
+    public ArrayList<Item> load(int classId, String ItemType, int slotIndex, ItemBase base, String HatPref) {
 
         ArrayList<Item> list = new ArrayList<>();
 
@@ -821,7 +851,9 @@ public class ItemList {
         } else if (ItemType.equals("Hat")) {
             for (Hat g: base.getHats()) {
                 if (g.containsClass(classId)) {
-                    list.add(g);
+                    if (g.getType().equals("both") || HatPref.equals("both") || HatPref.equals(g.getType())) {
+                        list.add(g);
+                    }
                 }
             }
         }

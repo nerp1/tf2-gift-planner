@@ -16,5 +16,8 @@ public class Hat extends Item {
         this.type = type;
     }
 
+    public String getType() {
+        return type;
+    }
 }
 

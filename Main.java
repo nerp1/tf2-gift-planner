@@ -70,7 +70,7 @@ void main() {
 
 
     do {
-        System.out.println("What type of hat do you want for this gift? Cute, cool or both?");
+        System.out.println("What type of hat do you want for this gift? Cute/Silly, Cool or Both?");
         String hatPrefTemp = input.next();
         String hatPrefTempLowerCase = hatPrefTemp.toLowerCase();
         input.nextLine();
@@ -94,10 +94,10 @@ void main() {
     testList.CreateTestItemBase(testBase);
 
 
-    ArrayList<Item> PrimaryWeaponList = testList.load(userClassId, "Weapon", 0, testBase);
-    ArrayList<Item> SecondaryWeaponList = testList.load(userClassId, "Weapon", 1, testBase);
-    ArrayList<Item> MeleeWeaponList = testList.load(userClassId, "Weapon", 2, testBase);
-    ArrayList<Item> HatList = testList.load(userClassId, "Hat", 0, testBase);
+    ArrayList<Item> PrimaryWeaponList = testList.load(userClassId, "Weapon", 0, testBase, null);
+    ArrayList<Item> SecondaryWeaponList = testList.load(userClassId, "Weapon", 1, testBase,null);
+    ArrayList<Item> MeleeWeaponList = testList.load(userClassId, "Weapon", 2, testBase,null);
+    ArrayList<Item> HatList = testList.load(userClassId, "Hat", 0, testBase,hatPref);
     Item PrimaryWeaponChoice;
     Item SecondaryWeaponChoice;
     Item MeleeWeaponChoice;
