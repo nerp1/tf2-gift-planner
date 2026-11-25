@@ -6,8 +6,13 @@ void main() {
 
         String hatPref;
 
+        String titleString = """
+                TF2 Gift Planner :D
+                ----------------------------\s""";
+
+
         Scanner input = new Scanner(System.in);
-        System.out.println("TF2 Gift Planner :D");
+        System.out.println(titleString);
         System.out.print("Type \"faq\" if you are confused about what this project is about ");
         System.out.print("or the jargon surrounding TF2 and its items.\n");
 
@@ -28,7 +33,7 @@ void main() {
                 case "soldier" -> userClassId = 1;
                 case "pyro"  -> userClassId = 2;
                 case "demoman", "demo" -> userClassId = 3;
-                case "heavy" -> userClassId = 4;
+                case "heavy", "pootis" -> userClassId = 4;
                 case "engineer", "engi" -> userClassId = 5;
                 case "medic"  -> userClassId = 6;
                 case "sniper"  -> userClassId = 7;
@@ -72,7 +77,8 @@ void main() {
         input.nextLine();
 
         switch (hatPrefTempLowerCase) {
-            case "cute" -> hatPref = "cute";
+            case "cute","silly","cute/silly","cutesilly","cute and silly", "cute silly", "cute & silly",
+                 "cute n silly" -> hatPref = "cute";
             case "cool" -> hatPref = "cool";
             case "both"  -> hatPref = "both";
 
@@ -256,7 +262,7 @@ public static void FAQ() {
                     System.out.println("Press any button to continue.");
                     input.nextLine();
                 }
-                
+
                 input.nextLine();
             } else {
                 System.out.println("Invalid input. Please choose a valid option.");

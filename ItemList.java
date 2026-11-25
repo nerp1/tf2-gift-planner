@@ -799,7 +799,7 @@ public class ItemList {
 
 
         base.addWeapon("Frying Pan", 2.77, new int[]{0,1,2,3,4,7}, "unique", 1141, 2);
-        base.addWeapon("Frying Pan", b.keysToRef(70), new int[]{0,1,2,3,4,7}, "unique", 1141, 2);
+        base.addWeapon("Frying Pan", b.keysToRef(70), new int[]{0,1,2,3,4,7}, "strange", 1141, 2);
         base.addWeapon("Conscientious Objector", 3.44, new int[]{0,1,2,3,4,7}, "unique", 474, 2);
         base.addWeapon("Freedom Staff", 3.44, new int[]{0,1,2,3,4,7}, "unique", 474, 2);
         base.addWeapon("Freedom Staff", 49.44, new int[]{0,1,2,3,4,7}, "unique", 474, 2);
