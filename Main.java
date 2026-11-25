@@ -62,11 +62,7 @@ void main() {
     budgetCalculator b = new budgetCalculator(63.22);
     double currentBudgetInRef = b.keysToRef(budget);
 
-    if (budget > 1) {
-        System.out.printf("%d keys is %.2f ref.%n", budget, currentBudgetInRef);
-    } else {
-        System.out.printf("%d key is %.2f ref.%n", budget, currentBudgetInRef);
-    }
+
 
 
     do {
@@ -88,20 +84,21 @@ void main() {
     } while (hatPref.equals("invalid"));
 
     // Variables all set: first part: check for weapons. Which means CREATE weapons.
+    System.out.println("Loading database...");
 
-    ItemList testList = new ItemList();
-    ItemBase testBase = new ItemBase();
-    testList.CreateTestItemBase(testBase);
+    ItemList List = new ItemList();
+    ItemBase Base = new ItemBase();
+    List.createFullItemBase(Base);
 
 
-    ArrayList<Item> PrimaryWeaponList = testList.load(userClassId, "Weapon", 0, testBase, null);
-    ArrayList<Item> SecondaryWeaponList = testList.load(userClassId, "Weapon", 1, testBase,null);
-    ArrayList<Item> MeleeWeaponList = testList.load(userClassId, "Weapon", 2, testBase,null);
-    ArrayList<Item> HatList = testList.load(userClassId, "Hat", 0, testBase,hatPref);
+    ArrayList<Item> PrimaryWeaponList = List.load(userClassId, "Weapon", 0, Base, null);
+    ArrayList<Item> SecondaryWeaponList = List.load(userClassId, "Weapon", 1, Base,null);
+    ArrayList<Item> MeleeWeaponList = List.load(userClassId, "Weapon", 2, Base,null);
+    ArrayList<Item> HatList = List.load(userClassId, "Hat", 0, Base,hatPref);
     Item PrimaryWeaponChoice;
     Item SecondaryWeaponChoice;
     Item MeleeWeaponChoice;
-    Item HatChoice;
+    Item HatChoice = null;
 
     System.out.println("Pick a primary weapon.");
 
@@ -110,7 +107,8 @@ void main() {
         if (PrimaryWeaponChoice.getName().equals("empty")) {
             break;
         }
-        System.out.printf("Confirm: Is \"%s\" your choice? (Y/N)%n", PrimaryWeaponChoice);
+        System.out.printf("Confirm: Is \"%s\" your choice? This would leave you with %.2f refined left. (Y/N)%n",
+                PrimaryWeaponChoice, currentBudgetInRef - PrimaryWeaponChoice.getPrice());
         String choice = input.nextLine();
         if (choice.equalsIgnoreCase("y") || choice.equalsIgnoreCase("yes")) {
             break;
@@ -126,7 +124,8 @@ void main() {
         if (SecondaryWeaponChoice.getName().equals("empty")) {
             break;
         }
-        System.out.printf("Confirm: Is \"%s\" your choice? (Y/N)%n", SecondaryWeaponChoice);
+        System.out.printf("Confirm: Is \"%s\" your choice? This would leave you with %.2f refined left. (Y/N)%n",
+                SecondaryWeaponChoice, currentBudgetInRef - SecondaryWeaponChoice.getPrice());
         String choice = input.nextLine();
         if (choice.equalsIgnoreCase("y") || choice.equalsIgnoreCase("yes")) {
             break;
@@ -141,7 +140,8 @@ void main() {
         if (MeleeWeaponChoice.getName().equals("empty")) {
             break;
         }
-        System.out.printf("Confirm: Is \"%s\" your choice? (Y/N)%n", MeleeWeaponChoice);
+        System.out.printf("Confirm: Is \"%s\" your choice? This would leave you with %.2f refined left. (Y/N)%n",
+                MeleeWeaponChoice, currentBudgetInRef - MeleeWeaponChoice.getPrice());
         String choice = input.nextLine();
         if (choice.equalsIgnoreCase("y") || choice.equalsIgnoreCase("yes")) {
             break;
@@ -152,15 +152,33 @@ void main() {
 
     currentBudgetInRef -= MeleeWeaponChoice.getPrice();
 
-    while (true) {
-        HatChoice = Choose(HatList,currentBudgetInRef);
+    boolean confirmed = false;
+
+    while (!confirmed) {
+        HatChoice = Choose(HatList, currentBudgetInRef);
+
         if (HatChoice.getName().equals("empty")) {
             break;
         }
-        System.out.printf("Confirm: Is \"%s\" your choice? (Y/N)%n", HatChoice);
-        String choice = input.nextLine();
-        if (choice.equalsIgnoreCase("y") || choice.equalsIgnoreCase("yes")) {
-            break;
+
+        while (true) {
+            System.out.printf("Confirm: Is \"%s\" your choice? This would leave you with %.2f refined left. " +
+                            "Type \"show\" to show a picture of this hat inside your browser. (Y/N)%n",
+                    HatChoice.getName(), currentBudgetInRef - HatChoice.getPrice());
+
+            String choice = input.nextLine();
+
+            if (choice.equalsIgnoreCase("y") || choice.equalsIgnoreCase("yes")) {
+                confirmed = true;
+                break;
+            } else if (choice.equalsIgnoreCase("n") || choice.equalsIgnoreCase("no")) {
+                break;
+            } else if (choice.equalsIgnoreCase("show")) {
+                HatChoice.loadURL();
+                ImageHandler.OpenImage(HatChoice.getUrl());
+            } else {
+                System.out.println("Invalid input. Please enter a valid input.");
+            }
         }
     }
     currentBudgetInRef -= HatChoice.getPrice();
@@ -234,8 +252,11 @@ public static void FAQ() {
                     case 1, 2, 3, 4, 5 -> System.out.println(faqAnswer(choice));
                     case 6 -> exitTime = true;
                 }
-                System.out.println("Press any button to continue.");
-                input.nextLine();
+                if (!exitTime) {
+                    System.out.println("Press any button to continue.");
+                    input.nextLine();
+                }
+                
                 input.nextLine();
             } else {
                 System.out.println("Invalid input. Please choose a valid option.");
@@ -256,7 +277,7 @@ public static String faqAnswer(int choice) {
 
 
     String answerTwo = """
-            The 9 character classaes are Scout, Soldier, Pyro, Demoman, Heavy, Engineer, Medic, Sniper and Spy.
+            The 9 character classes are Scout, Soldier, Pyro, Demoman, Heavy, Engineer, Medic, Sniper and Spy.
             """;
 
     String answerThree = """

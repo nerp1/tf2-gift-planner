@@ -3,12 +3,11 @@ public class Hat extends Item {
     private String type;
 
 
+
     public Hat(String name, double price, int[] classIds, String type, int itemId, String quality) {
         super(name, price, classIds, itemId, quality);
         this.type = type;
-
-
-
+         // Don't use main, database unfinished.
     }
 
     public Hat(String name, double price, int[] classIds, String type, int itemId, String quality, String url) {
@@ -16,8 +15,13 @@ public class Hat extends Item {
         this.type = type;
     }
 
+
+
+
+
     public String getType() {
         return type;
     }
+
 }
 

@@ -13,7 +13,16 @@ import java.time.Duration;
 public class ImageHandler {
     public static String getWikiURLImage (String name) {
         String newName = name.replace(" ", "_");
-        System.out.println(newName);
+
+        newName = switch (newName) { //Overrides for random url exceptions
+            case "Buckaroo's_Hat" -> "Buckaroos_Hat";
+            case "Doe-Boy" -> "Doe_Boy";
+            case "Heer's_Helmet" -> "Heers_Helmet";
+            case "Napoleon_Complex" -> "Napolean_Complex";
+            default -> newName;
+        };
+
+        //System.out.println(newName);
 
 
         String url = "https://wiki.teamfortress.com/w/api.php"
