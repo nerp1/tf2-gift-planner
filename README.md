@@ -21,7 +21,7 @@ Based on budget, hat preference, class preference, it will find eligible items t
 ## Roadmap
 - [x] Multiple weapon qualities
 - [x] Item images
-- [ ] Full Database
+- [x] Full Database
 - [ ] Live prices of items/keys
 
 ## Author
