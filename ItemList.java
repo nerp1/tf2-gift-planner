@@ -72,9 +72,9 @@ public class ItemList {
         base.addWeapon("Pretty Boy's Pocket Pistol", .11, new int[]{0}, "unique", 773, 1);
         base.addWeapon("Pretty Boy's Pocket Pistol", 9.55, new int[]{0}, "strange", 773, 1);
 
-        base.addWeapon("The Flying Guillotine", .11, new int[]{0}, "unique", 812, 1);
-        base.addWeapon("The Flying Guillotine", 36, new int[]{0}, "strange", 812, 1);
-        base.addWeapon("The Flying Guillotine", 45, new int[]{0}, "genuine", 833, 1);
+        base.addWeapon("Flying Guillotine", .11, new int[]{0}, "unique", 812, 1);
+        base.addWeapon("Flying Guillotine", 36, new int[]{0}, "strange", 812, 1);
+        base.addWeapon("Flying Guillotine", 45, new int[]{0}, "genuine", 833, 1);
 
         base.addWeapon("Mutated Milk", b.keysToRef(5) + 13, new int[]{0}, "unique", 1121, 1);
         base.addWeapon("Mutated Milk", b.keysToRef(33), new int[]{0}, "strange", 1121, 1);

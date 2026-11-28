@@ -30,7 +30,7 @@ public class Item {
     public Item(String name) {
         this.name = name;
         this.price = 0.00;
-        this.classIds = null;
+        this.classIds = new int[]{};
         this.itemId = 0;
         this.quality = "empty";
     }
@@ -92,9 +92,19 @@ public class Item {
         return null;
     }
 
+
+    public String getQualityAndName() {
+        return this.getQuality() + " " + this.getName();
+    }
+
+
     @Override
     public String toString() {
-        return String.format("%s %s - Price: %.2f ref",this.getQuality(), this.getName(), this.getPrice());
+        if (this.getName().equals("emptyItem")) {
+            return "No Item Chosen.";
+        } else {
+            return String.format("%s %s - Price: %.2f ref", this.getQuality(), this.getName(), this.getPrice());
+        }
     }
 
 }
